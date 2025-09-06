@@ -1,0 +1,124 @@
+     <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pengundian Dua Dadu</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .dadu-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .dadu {
+      width: 100px;
+      height: 100px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding: 10px;
+    }
+
+    .kuning {
+      background-color: yellow;
+    }
+
+    .biru {
+      background-color: #add8e6;
+    }
+
+    .dot {
+      width: 18px;
+      height: 18px;
+      background-color: black;
+      border-radius: 50%;
+      justify-self: center;
+      align-self: center;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: orange;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+  </style>
+</head>
+<body><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4KX380T5BD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4KX380T5BD');
+</script>
+
+
+
+  <h1>Pengundian Dua Dadu</h1>
+
+  <div class="dadu-container">
+    <div id="dadu1" class="dadu kuning"></div>
+    <div id="dadu2" class="dadu biru"></div>
+  </div>
+
+  <button onclick="undiDadu()">Undi</button>
+
+  <script>
+    const polaDadu = {
+      1: [0,0,0,0,1,0,0,0,0],
+      2: [1,0,0,0,0,0,0,0,1],
+      3: [1,0,0,0,1,0,0,0,1],
+      4: [1,0,1,0,0,0,1,0,1],
+      5: [1,0,1,0,1,0,1,0,1],
+      6: [1,0,1,1,0,1,1,0,1]
+    };
+
+    function tampilkanDadu(id, angka) {
+      const dadu = document.getElementById(id);
+      dadu.innerHTML = '';
+      polaDadu[angka].forEach(val => {
+        const dot = document.createElement("div");
+        if (val === 1) {
+          dot.className = "dot";
+        }
+        dadu.appendChild(dot);
+      });
+    }
+
+    function undiDadu() {
+      const d1 = Math.floor(Math.random() * 6) + 1;
+      const d2 = Math.floor(Math.random() * 6) + 1;
+      tampilkanDadu("dadu1", d1);
+      tampilkanDadu("dadu2", d2);
+    }
+
+    // Undi otomatis saat pertama dibuka
+    undiDadu();
+  </script>
+
+</body>
+<!-- Hosted by www.Geocities.ws -->
+</html>
